@@ -1,0 +1,26 @@
+{% extends "root.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+   
+    </head>
+    <body>
+    {% block content %}
+    <div class="s0">
+<img src={{ pk.img.url }}  width="700" alt="...">
+
+<div class="s1">
+  <h1><b>Название:</b> {{ pk.name }}</h1>
+
+ <h4><b>Описание:</b> {{ pk.description }}</h1>
+ <h4><b>Цена:</b> {{ pk.price }}</h1>
+ <h4><b>Рейтинг:</b><img src="/static/images/rating.png" width="60px"></h1>
+ </div>
+ </div>
+
+      
+
+    {% endblock %} 
+    </body>
+</html>

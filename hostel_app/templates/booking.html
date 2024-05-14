@@ -1,0 +1,24 @@
+{% extends "root.html" %}
+{% block content %}
+<h2>Забронировать номер</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-success" value="Отправить" type="submit">
+    </form>
+    
+    {% for booking in bookings_list %} 
+        <div>
+            <p>{{ booking.name }}</p>
+            <p>{{ booking.phone }}</p>
+            <p>{{ booking.room }}</p>
+            <p>{{ booking.num_of_guest }}</p>
+            <p>{{ booking.num_of_child }}</p>
+            <p>{{ booking.checkin_date }}</p>
+            <p>{{ booking.checkout_date }}</p>
+        </div>
+    {% endfor %}
+            
+     
+      
+{% endblock %}

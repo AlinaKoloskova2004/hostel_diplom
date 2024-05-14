@@ -1,0 +1,386 @@
+
+{% extends "root.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+  
+    </head>
+    <body>
+    {% block content %}
+       
+    
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0 mb-5">
+            <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="/static/images/carousel-1.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h6 class="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
+                                <h1 class="display-3 text-white mb-4 animated slideInDown">Откройте для себя жизнь в Роскошном отеле</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                   
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        <!-- Carousel End -->
+            <!-- Booking Start -->
+            <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
+                <div class="container">
+                    <div class="bg-white shadow" style="padding: 35px;">
+                        <div class="row g-2">
+                            <div class="col-md-10">
+                                <div class="row g-2">
+                                    <div class="col-md-3">
+                                        <div class="date" id="date1" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input"
+                                                placeholder="Дата заселения" data-target="#date1" data-toggle="datetimepicker" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="date" id="date2" data-target-input="nearest">
+                                            <input type="text" class="form-control datetimepicker-input" placeholder="Дата выселения" data-target="#date2" data-toggle="datetimepicker"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-select">
+                                            <option selected>Количество взрослых</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-select">
+                                            <option selected>Количество детей</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="{% url 'hostel_app:rooms' %}"><button class="btn btn-primary w-100">Поиск</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Booking End -->
+        <div class= "one">
+       
+    </div>
+    <!-- Room Start -->
+    <div class="container-xxl py-5 ">
+    
+        <div class="container ">
+             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                 <h6 class="section-title text-center text-primary text-uppercase">Специальные предложения</h6>
+                 <h1 class="mb-5">Выгодные предложения <span class="text-primary text-uppercase">Номеров</span></h1>
+             </div>
+             <div class="d-flex flex-nowrap h-100">
+             {% for room in rooms %} 
+            
+            <div class="row g-4 "  style="margin-left: 50px; max-width: 350px;">
+                <div class=" wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="{{ room.img.url }}" alt="">
+                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ room.price }}</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">{{ room.name }}</h5>
+                                <div class="ps-2" style="width: 200px;">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>{{ room.bed }} bed</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>{{ room.bath }} bath</small>
+                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                            </div>
+                            <p class="text-body mb-3">{{ room.description|truncatechars:40}}</p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{% url 'hostel_app:rooms' %}">Подробнее</a>
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                  
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Room End -->
+<!-- Team Start -->
+<div class="container-xxl py-5">
+
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Наша команда</h6>
+            <h1 class="mb-5">Познакомьтесь с нашими <span class="text-primary text-uppercase">Сотрудниками</span></h1>
+        </div>
+ <div class="d-flex flex-nowrap h-100 justify-content-center">
+        {% for staff in staffs %}
+        
+        <div class="row g-4" style="margin-left: 10px; width: 850px;">
+    
+            <div class="  wow fadeInUp" data-wow-delay="0.1s">
+            
+                <div class="rounded shadow overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" style="height: 200px;" src="{{ staff.img.url }}" alt="">
+                        
+                    </div>
+                    <div class="text-center p-4 mt-3" style="width: 250px;">
+                    
+                        <h5 class="fw-bold mb-0" style="width: 150px; margin-left: 25px;">{{ staff.name }}</h5>
+                        <small>{{ staff.post }}</small>
+                          
+                    </div>
+                     </div>
+        </div>
+                </div>
+                {% endfor %}
+                </div>
+
+       </div>
+
+        </div>
+           </div>
+            </div>
+               </div>
+                </div>
+
+</div>
+<!-- Team End -->
+
+       
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <h6 class="section-title text-start text-primary text-uppercase">О нас</h6>
+                        <h1 id="mb-4">Welcome to <span class="text-primary text-uppercase">"Альянс"</span></h1>
+                        <p class="mb-4">Наш отель - это прекрасное место для отдыха и релаксации. Мы находимся в живописном уголке, окруженном зеленью и горными пейзажами. Комфортабельные номера уютно оборудованы и предоставляют все необходимое для комфортного проживания. К услугам гостей нашего отеля: ресторан, бар, спа-центр, бассейн и множество развлечений.
+
+В нашем ресторане мы предлагаем блюда высокого качества, готовые из свежих ингредиентов, которые удовлетворят самый изысканный вкус. В баре гостей ждет широкий выбор напитков, отличный сервис и уютная атмосфера для отдыха.
+
+Спа-центр является идеальным местом для релаксации и восстановления сил. Здесь вы можете насладиться массажем, сауной или гидромассажной ванной и получить максимальное удовольствие.
+
+Мы позаботились о разнообразии развлечений для гостей всех возрастов и интересов. Наши услуги включают в себя занятия спортом, экскурсии, пеший туризм и многое другое.
+
+Мы гарантируем высокий уровень сервиса и заботу о каждом госте. Мы уверены, что пребывание в нашем отеле оставит только приятные воспоминания и заставит вас вернуться к нам снова и снова.</p>
+                        <div class="row g-3 pb-4">
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                       <img src ="/static/images/i6.png" width="40px" height="40px"> 
+                                        
+                                        <p class="mb-0">Номера</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                        <img src ="/static/images/i4.png" width="40px" height="40px"> 
+                                       
+                                        <p class="mb-0">Сотрудники</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="border rounded p-1">
+                                    <div class="border rounded text-center p-4">
+                                       <img src ="/static/images/i5.png" width="40px" height="40px"> 
+                                        
+                                        <p class="mb-0">Клиенты</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-end">
+                                <img src ="/static/images/about-1.jpg" class = "i1" width="200px" height="300px"> 
+                            </div>
+                            <div class="col-6 text-start">
+                               <img src ="/static/images/about-2.jpg" class = "i1" width="200px" height="300px"> 
+                            </div>
+                            <div class="col-6 text-end">
+                                <img src ="/static/images/about-3.jpg" class = "i1" width="200px" height="300px"> 
+                            </div>
+                            <div class="col-6 text-start">
+                                <img src ="/static/images/about-4.jpg" class = "i1" width="200px" height="300px"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+        
+        <!-- Service Start -->
+        <div id="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title text-center text-primary text-uppercase">Наши услуги</h6>
+                    <h1 class="mb-5">Ознакомьтесь с нашими <span class="text-primary text-uppercase">Услугами</span></h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="service-item rounded" href="{% url 'hostel_app:rooms' %}">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                   <img src ="/static/images/i6.png" width="40px" height="40px"> 
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Номера</h5>
+                            <p class="text-body mb-0">Номера нашего отеля - просторные и удобные, чтобы гости могли насладиться комфортом и расслабиться после насыщенного дня. </p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <a class="service-item rounded" href="{% url 'hostel_app:restaurant' %}">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <img src ="/static/images/i7.png" width="40px" height="40px"> 
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Ресторан</h5>
+                            <p class="text-body mb-0">Ресторан отеля "Альянс" расположен на первой линии моря, что создает потрясающую атмосферу для ужина при свечах или завтрака с видом на океан. </p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <a class="service-item rounded" href="">
+                            <div class="service-icon bg-transparent border rounded p-1">
+                                <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
+                                    <img src ="/static/images/i8.png" width="40px" height="40px"> 
+                                </div>
+                            </div>
+                            <h5 class="mb-3">Фитнесс</h5>
+                            <p class="text-body mb-0">Спортзал в отеле "Альянс" оборудован современной техникой и предлагает отличные возможности для тренировок.</p>
+                        </a>
+                    </div>
+                    
+                   
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+      
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          <h6 class="section-title text-center text-primary text-uppercase">Новости</h6>
+          <h1 class="mb-5">Ознакомьтесь с нашими <span class="text-primary text-uppercase">Новостями</span></h1>
+      </div>
+       <section class="grid">
+    <article class="grid-item">
+        <div class="image">
+            <img src="/static/images/info2.jpg" />
+        </div>
+        <div class="info">
+            <h5>ДЕПУТАТЫ ПОДДЕРЖАЛИ ВВЕДЕНИЕ КУРОРТНОГО СБОРА В ПЕТЕРБУРГЕ С 1 АПРЕЛЯ 2024 ГОДА</h5>
+            <div class="info-text">
+                <p>Эксперимент начнется 1 октября 2023 года, но, до 1 апреля...</p>
+            </div>
+            <div class="button-wrap">
+                <a class="atuin-btn" href="https://hotelier.pro/news/item/deputaty-podderzhali-vvedenie-kurortnogo-sbora-v-peterburge-s-1-aprelya-2024-goda/">Подробнее</a>
+            </div>
+        </div>
+        
+    </article>
+    
+    <!-- Еще блоки -->
+    
+    <article class="grid-item">
+        <div class="image">
+            <img src="/static/images/info1.png" />
+        </div>
+        <div class="info">
+            <h5>В РОССИИ НАБЛЮДАЕТСЯ РОСТ ЧИСЛА ГОСТЕЙ В ОТЕЛЯХ</h5>
+            <div class="info-text">
+                <p>По данным Росстата на 17% увеличилось число постояльцев в гостиницах...</p>
+            </div>
+            <div class="button-wrap">
+                <a class="atuin-btn" href="https://hotelier.pro/news/item/v-rossii-nablyudaetsya-rost-chisla-gostey-v-otelyakh/">Подробнее</a>
+            </div>
+        </div>
+    </article>    
+</section>
+<section class="grid">
+    <article class="grid-item">
+        <div class="image">
+            <img src="/static/images/info3.jpg" />
+        </div>
+        <div class="info">
+            <h5>Туристы стали заранее планировать заселение в гостиницы</h5>
+            <div class="info-text">
+                <p>Россияне начали бронировать проживание в гостиницах РФ...</p>
+            </div>
+            <div class="button-wrap">
+                <a class="atuin-btn" href="https://hoteliernews.ru/turisty-stali-zaranee-planirovat-zaselenie-v-gostinitsy">Подробнее</a>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Еще блоки -->
+    
+    <article class="grid-item">
+        <div class="image">
+            <img src="/static/images/info4.jpg" />
+        </div>
+        <div class="info">
+            <h5>Крымские отели снизили цены на отдых до 25%
+</h5>
+            <div class="info-text">
+                <p>В Крымских отелях сегодня отмечается снижение цен...</p>
+            </div>
+            <div class="button-wrap">
+                <a class="atuin-btn" href="https://hoteliernews.ru/krymskie-oteli-snizili-tseny-na-otdyh-do-25">Подробнее</a>
+            </div>
+        </div>
+    </article>    
+</section>
+
+
+ <!-- Newsletter Start -->
+ <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+     <div class="row justify-content-center">
+         <div class="col-lg-10 border rounded p-1">
+             <div class="border rounded text-center p-1">
+                 <div class="bg-white rounded text-center p-5">
+                     <h4 class="mb-4">Подпишитесь на нашу рассылку <span class="text-primary text-uppercase">НОВОСТЕЙ</span></h4>
+                     <div class="position-relative mx-auto" style="max-width: 400px;">
+                         <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                         <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Отправить</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!-- Newsletter END -->
+
+    {% endblock %}
+    
+    </body>
+
+</html>

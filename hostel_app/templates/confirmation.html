@@ -1,0 +1,8 @@
+{% extends "root.html" %}
+{% block content %}
+<h3>Вы успешно забронировали места на: <h1>{{ event.title }}</h1></h3>
+<h4>Оплата бронирования</h4>
+<p>Сумма к оплате: {{ event.price }} за один билет</p>
+<img src="/static/images/qr.jpg" style="height: 200px;">
+<a href="{% url 'main:profile_user' %}">Перейти в профиль</a>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'root.html' %}
+{% block content %}
+
+<h2>Профиль пользователя: {{user.username}}</h2>
+<a href="{% url 'account_email'  %}">Добавить почту</a>
+<a href="{% url 'account_email'  %}">Изменить пароль</a>
+{% endblock %}

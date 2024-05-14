@@ -1,0 +1,33 @@
+{% extends 'root.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-body" style="background-color: lightgrey;">
+        <h3>Профиль пользователя:<h1> {{user.username}}</h1></h3>
+
+    </div>
+    <div class="d-flex justify-content-around">
+    <div class="f-flex">
+    <h2>Имя пользователя: <h5> {{user.first_name}}</h5></h2>
+    <h2>Фамилия пользователя:<h5> {{user.last_name}}</h5></h2>
+        <h2>Описание:</h2><p>{{ profile.bio }}</p>
+    </div>
+        <div class="f-flex">
+        <h2>Местоположение:</h2><p> {{ profile.location }}</p>
+        <h2>Дата рождения:</h2><p> {{ profile.birth_date }}</p>
+        </div>
+    </div>
+</div>
+<h2>Забронированные номера:</h2>
+
+</div>
+
+
+
+
+<h3 style="margin-top: 50px; ">Действия с профилем:
+    <h5 style="margin-top: 20px;"><a href="{% url 'account_email'  %}" style="color: #4e555b">Добавить почту</a>
+    <a href="{% url 'account_change_password'  %}" style="color: #4e555b">Изменить пароль</a>
+    <a href="{% url 'hostel_app:edit_profile' %}" style="color: #4e555b">Изменить профиль</a>
+    </h5>
+</h3>
+{% endblock %}
