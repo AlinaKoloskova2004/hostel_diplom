@@ -1,0 +1,171 @@
+{% extends 'root.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        header h1 {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: running-text 10s linear infinite;
+        }
+        .blue {
+            background-color: lightblue;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .trainers-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.fitness-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.fitness-card {
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.fitness-card img {
+    width: 50px;
+    height: 50px;
+}
+
+.fitness-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+.modern {
+    background-color: lightblue;
+    color: #333; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.trainer-card img {
+    width: 100%;
+    border-radius: 15px 15px 0 0; /* Закругленные углы только сверху */
+}
+
+.trainer-card h3 {
+    margin-top: 10px;
+}
+
+.trainer-card p {
+    font-size: 14px;
+}
+
+.trainers-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+        @keyframes running-text {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="blue">
+        <header>
+            <h1>Добро пожаловать в наш фитнес центр!</h1>
+        </header>
+    </div>
+     <!-- Start About -->
+	<div class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img src="/static/images/fitness.jpg" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>Добро пожаловать в <span>фитнес-центр "SportFit"!</span></h1>
+					
+						<p>Фитнес-центр "SportFit" - это современный спортивный комплекс с высококлассными тренажерами и индивидуальным подходом к каждому клиенту. Наша команда профессионалов поможет вам достичь ваших спортивных целей, независимо от уровня подготовки.</p>
+                        <p>Наши тренеры - это лучшие специалисты в области фитнеса, йоги, кроссфита и других направлений. Они готовы помочь вам создать программу тренировок, которая будет подходить именно вам.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+    <div class="fitness-cards">
+        <div class="fitness-card">
+            <img src="/static/images/icon1.png" alt="Icon 2">
+            <h3>Кроссфит</h3>
+        </div>
+        <div class="fitness-card">
+            <img src="/static/images/icon2.png" alt="Icon 1">
+            <h3>Йога</h3>
+        </div>
+        
+        <div class="fitness-card">
+            <img src="/static/images/icon3.png" alt="Icon 2">
+            <h3>Кардио-тренировки</h3>
+        </div>
+        <div class="fitness-card">
+            <img src="/static/images/icon4.png" alt="Icon 1">
+            <h3>Зумба</h3>
+        </div>
+        
+        <div class="fitness-card">
+            <img src="/static/images/icon5.png" alt="Icon 2">
+            <h3>Пилатес</h3>
+        </div>
+        
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <h2>Наши тренеры:</h2>
+    </div>
+    <div class="trainers-container">
+        <div class="trainer-card modern">
+            <img src="/static/images/trainer1.jpg" style="width: 300px;height: 200px;" alt="Trainer 1">
+            <h3>Иванова Анна</h3>
+            <p>Сертифицированный тренер по кроссфиту</p>
+        </div>
+        <div class="trainer-card modern">
+            <img src="/static/images/trainer2.png" style="width: 300px;height: 200px;" alt="Trainer 2">
+            <h3>Петров Дмитрий</h3>
+            <p>Инструктор по йоге</p>
+        </div>
+        <div class="trainer-card modern">
+            <img src="/static/images/trainer3.jpg" style="width: 300px;height: 200px;" alt="Trainer 3">
+            <h3>Соколова Елена</h3>
+            <p>Тренер по кардио-тренировкам</p>
+        </div>
+        <div class="trainer-card modern">
+            <img src="/static/images/trainer4.jpg" style="width: 300px;height: 200px;" alt="Trainer 4">
+            <h3>Козлов Игорь</h3>
+            <p>Инструктор по зумбе</p>
+        </div>
+    </div>    
+</body>
+</html>
+{% endblock %}

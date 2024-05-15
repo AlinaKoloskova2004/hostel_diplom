@@ -82,6 +82,12 @@ def restaurant_view(request):
     context = {'page':'restaurant'}
     return render(request, 'restaurant.html',context)
 
+   
+def fitness_view(request):
+    context = {'page':'fitness'}
+    return render(request, 'fitness.html',context)
+
+
 
 
    

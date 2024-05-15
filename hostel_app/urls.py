@@ -9,6 +9,7 @@ urlpatterns=[
     path('', HostelAppView.as_view(), name='hostel_app'),
     path('room/', HostelAppView2.as_view(), name='rooms'),
     path('restaurant/', views.book_room, name='booking'),
+    path('fitness/', views.fitness_view, name='fitness'),
     path('booking/', restaurant_view, name='restaurant'),
     path('<int:pk>/', room_id_view, name='details'),
     path('profile_user/',  views.view_profile, name='profile_user'),
