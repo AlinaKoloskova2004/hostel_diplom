@@ -1,9 +1,56 @@
 {% extends "root.html" %}
 
 {% block content %}
-<form method="post">
+<style>
+    .registration-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: linear-gradient(to top right, #ffffcc 11%, #999966 100%);
+    margin-top: 50px;
+}
+
+.registration-form .form-group {
+    margin-bottom: 15px;
+}
+
+.registration-form label {
+    font-weight: bold;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.registration-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: #0056b3;
+}
+</style>
+<div class="registration-form">
+<form method="post" class="form">
+
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+   
     <input type="hidden" name="next" value="/accounts/confirm-email/">
     <button type="submit">Register</button>
 </form>

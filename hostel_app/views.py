@@ -147,8 +147,8 @@ def success(request):
 
 def view_profile(request):
     profile = Profile.objects.get(user=request.user)
-    reservations = Booking.objects.filter(user=request.user)
-    return render(request, 'profile/profile_user.html', {'profile': profile, 'reservations': reservations})
+   
+    return render(request, 'profile/profile_user.html', {'profile': profile})
 
 def edit_profile(request):
     profile = Profile.objects.get(user=request.user)
