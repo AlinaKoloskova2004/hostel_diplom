@@ -1,5 +1,6 @@
 
 {% extends "root.html" %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -370,10 +371,10 @@
      <div class="row justify-content-center">
          <div class="col-lg-10 border rounded p-1">
              <div class="border rounded text-center p-1">
+                
+    <img style="width: 50px;" src="{% static 'images/cat.gif' %}" alt="Cute Cat Gif">
                  <div class="bg-white rounded text-center p-5">
                      <h4 class="mb-4">Подпишитесь на нашу рассылку <span class="text-primary text-uppercase">НОВОСТЕЙ</span></h4>
-                    
-                     
                      <div class="position-relative mx-auto" style="max-width: 400px;">
                         <form method="post">
                         {% csrf_token %}

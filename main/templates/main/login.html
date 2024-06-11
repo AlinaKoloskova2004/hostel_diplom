@@ -1,6 +1,8 @@
 {% extends 'main/base_template.html' %}
-
+{% load static %}
 {% block content %}
+<img style="width: 50px;" src="{% static 'images/cat.gif' %}" alt="Cute Cat Gif">
+
     <div class="basic-div login-div">
         {% if user.is_authenticated %}
             Вы уже выполнили вход на сайт

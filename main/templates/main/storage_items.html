@@ -252,5 +252,30 @@
         $("#content-table th").click(storageItemSort);
 
         showStorageItems(apiURL);
+
+        function getInventoryItems(page) {
+            $.ajax({
+                url: '/api/inventory-items?page=' + page,
+                method: 'GET',
+                success: function(response) {
+                    let inventoryItems = response.data;
+                    let nextPage = response.nextPage;
+                    let prevPage = response.prevPage;
+
+                    inventoryItems.forEach(item => {
+                        if (item.quantity < 50) {
+                            $('#modalTitle').text('Предупреждение');
+                            $('#modalMessage').text('Требуется пополнить запасы товара: ' + item.name);
+                            $('#myModal').modal('show');
+                        }
+                    });
+
+                    updateContentTable(inventoryItems);
+                    updateNavigation(nextPage, prevPage);
+                }
+            });
+        }
+        
     </script>
+
 {% endblock %}

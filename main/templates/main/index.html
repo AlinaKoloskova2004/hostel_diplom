@@ -1,4 +1,5 @@
 {% extends 'main/base_template.html' %}
+{% load static %}
 
 {% block message %}
     <div class="modal" id="message-block" style="display: none">
@@ -47,7 +48,7 @@
                     <ul>
                         <li>
                             <span>
-                                <a href="{% url 'main:products' %}">Товары</a>
+                                <a href="{% url 'main:products' %}">Инвентарь</a>
                             </span>
                         </li>
                         <li>
@@ -72,7 +73,7 @@
                         </li>
                         <li>
                             <span>
-                                <a href="{% url 'main:motion_report' %}?report_type=products">Отчет по движениям товаров</a>
+                                <a href="{% url 'main:motion_report' %}?report_type=products">Отчет по движениям инвентаря</a>
                             </span>
                         </li>
                         <li>
@@ -82,7 +83,7 @@
                         </li>
                         <li>
                             <span>
-                                <a href="{% url 'main:products_to_xls' %}">Список товаров (XLS)</a>
+                                <a href="{% url 'main:products_to_xls' %}">Список инвентаря (XLS)</a>
                             </span>
                         </li>
                         <li>
@@ -108,7 +109,7 @@
                             </li>
                             <li>
                                 <span>
-                                    <a href="{% url 'main:import_products' %}">Импорт товаров</a>
+                                    <a href="{% url 'main:import_products' %}">Импорт инвенатря</a>
                                 </span>
                             </li>
                             <li>
@@ -134,4 +135,5 @@
             </ul>
         </div>
     </div>
+
 {% endblock %}
