@@ -32,8 +32,8 @@ class Product(BaseDataModel):
         return '{number:<10}|{title}'.format(number=self.pk, title=self.title)
 
     class Meta:
-        verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
+        verbose_name = 'Инвентарь'
+        verbose_name_plural = 'Инвентарь'
         ordering = ['title']
 
 
@@ -70,15 +70,15 @@ class Operation(models.Model):
 
 
 class StorageItem(BaseDataModel):
-    product = models.OneToOneField(Product, on_delete=models.PROTECT, verbose_name='Товар')
+    product = models.OneToOneField(Product, on_delete=models.PROTECT, verbose_name='Инвентарь')
     count = models.IntegerField(verbose_name='Количество')
 
     def __str__(self):
         return f'{str(self.product)} ({self.count})'
 
     class Meta:
-        verbose_name = 'Товар на складе'
-        verbose_name_plural = 'Товары на складе'
+        verbose_name = 'Инвентарь на складе'
+        verbose_name_plural = 'Инвентарь на складе'
 
 
 class Document(BaseDataModel):
@@ -105,12 +105,12 @@ class Document(BaseDataModel):
 
 class DocumentItem(models.Model):
     document = models.ForeignKey(Document, on_delete=models.CASCADE, verbose_name='Документ')
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Товар')
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Инвентарь')
     count = models.IntegerField(verbose_name='Количество')
 
     def __str__(self):
         return f'{self.product.title}. Количество {self.count}'
 
     class Meta:
-        verbose_name = 'Товар в документе'
-        verbose_name_plural = 'Товары в документе'
+        verbose_name = 'Инвентарь в документе'
+        verbose_name_plural = 'Инвентарь в документе'
