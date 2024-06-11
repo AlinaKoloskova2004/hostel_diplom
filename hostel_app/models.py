@@ -75,5 +75,9 @@ class Reservation(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     data = models.DateField()
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True, verbose_name='Почта')
+
     
     

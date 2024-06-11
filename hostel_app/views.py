@@ -7,20 +7,29 @@ from profile_user.models import Profile
 from .forms import BookingForm, ProfileForm
 
 
-class HostelAppView (ListView):
-   model = Room
-   context_object_name = 'rooms'
-   template_name = 'rooms.html'
-   
-   
-   def get_queryset(self):
-       return self.model.objects.filter(hottest=True)
-   
-    
-   def get(self, request):
-       queryset = self.get_queryset()
-       staff = Staff.objects.all()
-       return render(request, self.template_name, context={self.context_object_name:queryset, 'staffs':staff})
+class HostelAppView(ListView):
+    model = Room
+    context_object_name = 'rooms'
+    template_name = 'rooms.html'
+
+    def get_queryset(self):
+        return self.model.objects.filter(hottest=True)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['staffs'] = Staff.objects.all()
+        context['form'] = SubscriberForm()
+        return context
+
+    def post(self, request):
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'subscribed.html')
+        else:
+            queryset = self.get_queryset()
+            staff = Staff.objects.all()
+            return render(request, self.template_name, context={'rooms': queryset, 'staffs': staff, 'form': form})
         
    
 
@@ -161,4 +170,7 @@ def edit_profile(request):
         form = ProfileForm(instance=profile)
     return render(request, 'profile/edit_profile.html', {'form': form})
 
+
+
+from .forms import SubscriberForm
 

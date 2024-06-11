@@ -1,5 +1,5 @@
 from django import forms
-from hostel_app.models import Booking
+from hostel_app.models import Booking, Subscriber
 from profile_user.models import Profile
 
 class RoomSearchForm(forms.Form):
@@ -22,3 +22,8 @@ class ProfileForm(forms.ModelForm):
         fields = ['bio', 'profile_picture','location', 'birth_date']
 
 
+
+class SubscriberForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ['email']

@@ -4,7 +4,7 @@ from hostel_app.models import Guest
 from hostel_app.models import Room
 from hostel_app.models import Booking
 from hostel_app.models import Staff
-from hostel_app.models import Duty
+from hostel_app.models import Duty, Subscriber
 
 
 
@@ -46,3 +46,7 @@ class DutyAdmin(admin.ModelAdmin):
     search_fields = ("day",)
     list_filter = ("day", )
     fields = ('staff','day')
+    
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    fields = ('email',)
